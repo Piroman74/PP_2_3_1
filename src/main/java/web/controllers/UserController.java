@@ -61,14 +61,27 @@ public class UserController {
         return "redirect:/";
     }
 
+//    @GetMapping("/user-update/{id}")
+//    public String updateUserForm(@PathVariable("id") long id, Model model) {
+//        model.addAttribute("update", userService.update();)
+//        return "user-update";
+//    }
+//
+//    @PostMapping("/")
+//    public String updateUser(User user) {
+//        userService.update(user);
+//        return "redirect:/";
+//    }
+
     @GetMapping("/user-update/{id}")
-    public String updateUserForm(@PathVariable("id") long id, Model model) {
-        model.addAttribute("update", userService.update();)
+    public String updateUserForm(@PathVariable("id") Long id, Model model){
+        User user = userService.show(id);
+        model.addAttribute("user", user);
         return "user-update";
     }
 
-    @PostMapping("/")
-    public String updateUser(User user) {
+    @PostMapping("/user-update")
+    public String updateUser(User user){
         userService.update(user);
         return "redirect:/";
     }
