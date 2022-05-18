@@ -82,7 +82,6 @@ public class WebConfig implements WebMvcConfigurer {
                 = new LocalContainerEntityManagerFactoryBean();
         em.setDataSource(getDataSource());
         em.setPackagesToScan(new String[]{"web.models"});
-//        "java.web.models"
 
         JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
         em.setJpaVendorAdapter(vendorAdapter);

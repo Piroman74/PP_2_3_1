@@ -44,17 +44,32 @@ public class UserController {
         return "redirect:/";
     }
 
-    @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") long id) {
-        model.addAttribute("user", userService.show(id));
-        return "/edit";
-    }
+//    @GetMapping("/{id}/edit")
+//    public String edit(Model model, @PathVariable("id") long id) {
+//        model.addAttribute("user", userService.show(id));
+//        return "/edit";
+//    }
 
-    @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user, @PathVariable("id") long id) {
-        userService.update(id, user);
+    //    @PatchMapping("/{id}")
+//    public String update(@ModelAttribute("user") User user, @PathVariable("id") long id) {
+//        userService.update(id, user);
+//        return "redirect:/";
+//    }
+    @GetMapping("/user-remove/{id}")
+    public String remove(@PathVariable("id") long id) {
+        userService.deleteById(id);
         return "redirect:/";
     }
 
+    @GetMapping("/user-update/{id}")
+    public String updateUserForm(@PathVariable("id") long id, Model model) {
+        model.addAttribute("update", userService.update();)
+        return "user-update";
+    }
 
+    @PostMapping("/")
+    public String updateUser(User user) {
+        userService.update(user);
+        return "redirect:/";
+    }
 }

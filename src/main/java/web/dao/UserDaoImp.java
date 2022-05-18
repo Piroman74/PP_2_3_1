@@ -22,23 +22,19 @@ public class UserDaoImp implements UserDao {
     private EntityManager entityManager;
 
 
-//    @Override
-//    @Transactional
-//    public void createUsersTable() {
-//        entityManager.createNativeQuery("CREATE TABLE IF NOT EXISTS `users` (\n" +
-//                "  `id` INT NOT NULL AUTO_INCREMENT,\n" +
-//                "  `firstName` VARCHAR(45) NOT NULL,\n" +
-//                "  `lastName` VARCHAR(45) NOT NULL,\n" +
-//                "  `email` VARCHAR(45) NOT NULL,\n" +
-//                "  PRIMARY KEY (`id`));").executeUpdate();
-//    }
-
     @Override
     public List<User> index() {
         return entityManager.createQuery("select s from User s ", User.class)
                 .getResultList();
     }
 
+    @Override
+    @Transactional
+    public void deleteById(long id) {
+        entityManager.remove(entityManager.find(User.class, id));
+    }
+
+    @Override
     @Transactional
     public void addUser(User user) {
         entityManager.persist(user);
@@ -50,8 +46,9 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public void update(long id, User user) {
-        entityManager.persist();
+    @Transactional
+    public void update(User user) {
+        entityManager.merge(user);
     }
 
 }

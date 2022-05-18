@@ -6,6 +6,7 @@ import web.dao.UserDao;
 import web.models.User;
 
 import java.util.List;
+
 @Component
 public class UserServiceImp implements UserService {
 
@@ -24,8 +25,18 @@ public class UserServiceImp implements UserService {
     }
 
     @Override
+    public void update(User user) {
+        userDao.update(user);
+    }
+
+    @Override
     public List<User> index() {
         return userDao.index();
+    }
+
+    @Override
+    public void deleteById(long id) {
+        userDao.deleteById(id);
     }
 
 }
