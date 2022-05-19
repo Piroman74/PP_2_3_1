@@ -13,10 +13,10 @@
         <table>
             <thead>
             <tr>
-                <th>Id</th>
-                <th>First name</th>
-                <th>Last name</th>
-                <th>Email</th>
+                <th><b>Id</b></th>
+                <th><b>First name</b></th>
+                <th><b>Last name</b></th>
+                <th><b>Email</b></th>
             </tr>
             </thead>
             <tbody>
@@ -25,28 +25,16 @@
                 <td th:text="${user.firstName}"></td>
                 <td th:text="${user.lastName}"></td>
                 <td th:text="${user.email}"></td>
-                <td><a th:href="@{user-update/{id}(id=${user.getId()})}">Edit</a></td>
-                <td><a th:href="@{/user-remove/{id}(id=${user.getId()})}">Delete</a></td>
+                <td><a th:href="@{user-update/{id}(id=${user.getId()})}"><b><u>Edit</u></b></a></td>
+                <td><a th:href="@{/user-remove/{id}(id=${user.getId()})}"><b><u>Delete</u></b></a></td>
             </tr>
             </tbody>
         </table>
     </div>
-    <p><a href="/user-create">Create user</a></p>
 </div>
-
-<!--<div th:each="person : ${users}">-->
-<!--    <a th:href="@{{id}(id=${person.getId()})}" th:text="${person.getId()}">user</a>-->
-<!--    <a th:text="${person.getFirstName()}"></a>-->
-<!--    <a th:text="${person.getLastName()}"></a>-->
-<!--    <a th:text="${person.getEmail()}"></a>-->
-<!--</div>-->
 <br/>
 <form th:action="@{/new}">
-    <button>New User</button>
+    <button><b>New User</b></button>
 </form>
-<form th:action="@{/remove}">
-    <button>Remove User</button>
-</form>
-
 </body>
 </html>
